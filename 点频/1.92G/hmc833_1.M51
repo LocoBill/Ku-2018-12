@@ -1,0 +1,276 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        12/27/2018  14:38:26  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL51\C51\BIN\BL51.EXE STARTUP.obj, hmc833.obj TO hmc833_1.92G RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  STARTUP.obj (?C_STARTUP)
+  hmc833.obj (HMC833)
+  D:\KEIL51\C51\LIB\C51S.LIB (?C?ULCMP)
+  D:\KEIL51\C51\LIB\C51S.LIB (?C?LSHL)
+
+
+LINK MAP OF MODULE:  hmc833_1.92G (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000AH     UNIT         _DATA_GROUP_
+            IDATA   0012H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     013EH     UNIT         ?PR?WRITE_HMC833?HMC833
+            CODE    0141H     007DH     UNIT         ?PR?_WRITE_HMC833_24_RESISTER?HMC833
+            CODE    01BEH     002FH     UNIT         ?PR?MAIN?HMC833
+            CODE    01EDH     002DH     UNIT         ?PR?_DELAY_US?HMC833
+            CODE    021AH     0024H     UNIT         ?C?LIB_CODE
+            CODE    023EH     000CH     UNIT         ?C_C51STARTUP
+            CODE    024AH     0007H     UNIT         ?PR?PORT_INIT_833?HMC833
+            CODE    0251H     0004H     UNIT         ?PR?SYSCLK_INIT?HMC833
+
+
+
+OVERLAY MAP OF MODULE:   hmc833_1.92G (?C_STARTUP)
+
+
+SEGMENT                                        DATA_GROUP 
+  +--> CALLED SEGMENT                        START    LENGTH
+------------------------------------------------------------
+?C_C51STARTUP                                -----    -----
+  +--> ?PR?MAIN?HMC833
+
+?PR?MAIN?HMC833                              -----    -----
+  +--> ?PR?SYSCLK_INIT?HMC833
+  +--> ?PR?PORT_INIT_833?HMC833
+  +--> ?PR?_DELAY_US?HMC833
+  +--> ?PR?WRITE_HMC833?HMC833
+
+?PR?WRITE_HMC833?HMC833                      0008H    0004H
+  +--> ?PR?_WRITE_HMC833_24_RESISTER?HMC833
+
+?PR?_WRITE_HMC833_24_RESISTER?HMC833         000CH    0006H
+  +--> ?PR?_DELAY_US?HMC833
+BL51 BANKED LINKER/LOCATER V6.22                                                      12/27/2018  14:38:26  PAGE 2
+
+
+
+
+
+SYMBOL TABLE OF MODULE:  hmc833_1.92G (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:023EH         SEGMENT       ?C_C51STARTUP
+  I:0012H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0241H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:023EH         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:023EH         LINE#         133
+  C:0240H         LINE#         134
+  C:0241H         LINE#         135
+  C:0242H         LINE#         136
+  C:0244H         LINE#         185
+  C:0247H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        HMC833
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  B:0080H.1       PUBLIC        HMC833_Sen
+  D:0080H         PUBLIC        P0
+  B:0080H.4       PUBLIC        HMC833_Ld
+  D:00A4H         PUBLIC        P0MDOUT
+  D:00D9H         PUBLIC        PCA0MD
+  D:00E2H         PUBLIC        XBR1
+  C:0147H         PUBLIC        _write_HMC833_24_resister
+  C:01BEH         PUBLIC        main
+  C:024AH         PUBLIC        PORT_Init_833
+  D:00B2H         PUBLIC        OSCICN
+  C:0003H         PUBLIC        write_Hmc833
+  C:0251H         PUBLIC        SYSCLK_Init
+  C:01FCH         PUBLIC        _delay_us
+BL51 BANKED LINKER/LOCATER V6.22                                                      12/27/2018  14:38:26  PAGE 3
+
+
+  B:0080H.2       PUBLIC        HMC833_Sdi
+  B:0080H.3       PUBLIC        HMC833_Sck
+  -------         PROC          SYSCLK_INIT
+  C:0251H         LINE#         9
+  C:0251H         LINE#         10
+  C:0251H         LINE#         11
+  C:0254H         LINE#         13
+  -------         ENDPROC       SYSCLK_INIT
+  C:01F8H         SYMBOL        L?0030
+  -------         PROC          L?0029
+  -------         ENDPROC       L?0029
+  C:01F8H         SYMBOL        L?0030
+  -------         PROC          _DELAY_US
+  D:0006H         SYMBOL        t
+  -------         DO            
+  D:0006H         SYMBOL        x
+  D:0004H         SYMBOL        y
+  -------         ENDDO         
+  C:01FCH         LINE#         15
+  C:01FCH         LINE#         16
+  C:01FCH         LINE#         18
+  C:0205H         LINE#         19
+  C:0219H         LINE#         20
+  -------         ENDPROC       _DELAY_US
+  C:0141H         SYMBOL        L?0032
+  -------         PROC          L?0031
+  -------         ENDPROC       L?0031
+  C:0141H         SYMBOL        L?0032
+  -------         PROC          _WRITE_HMC833_24_RESISTER
+  D:0003H         SYMBOL        Addr
+  D:000DH         SYMBOL        Register_data
+  -------         DO            
+  D:0011H         SYMBOL        i
+  -------         ENDDO         
+  C:0147H         LINE#         23
+  C:0149H         LINE#         24
+  C:0149H         LINE#         26
+  C:014BH         LINE#         27
+  C:014DH         LINE#         28
+  C:0151H         LINE#         29
+  C:0153H         LINE#         30
+  C:0156H         LINE#         31
+  C:0159H         LINE#         32
+  C:0159H         LINE#         33
+  C:015DH         LINE#         34
+  C:015DH         LINE#         35
+  C:015FH         LINE#         36
+  C:0161H         LINE#         38
+  C:0161H         LINE#         39
+  C:0163H         LINE#         40
+  C:0163H         LINE#         41
+  C:0163H         LINE#         42
+  C:0163H         LINE#         43
+  C:0163H         LINE#         44
+  C:0166H         LINE#         45
+  C:016AH         LINE#         46
+  C:0173H         LINE#         47
+BL51 BANKED LINKER/LOCATER V6.22                                                      12/27/2018  14:38:26  PAGE 4
+
+
+  C:0176H         LINE#         48
+  C:0176H         LINE#         49
+  C:018BH         LINE#         50
+  C:018BH         LINE#         51
+  C:018DH         LINE#         52
+  C:018FH         LINE#         54
+  C:018FH         LINE#         55
+  C:0191H         LINE#         56
+  C:0191H         LINE#         57
+  C:0191H         LINE#         58
+  C:0191H         LINE#         59
+  C:0191H         LINE#         60
+  C:0194H         LINE#         61
+  C:01A9H         LINE#         62
+  C:01B2H         LINE#         63
+  C:01B5H         LINE#         64
+  C:01B7H         LINE#         65
+  -------         ENDPROC       _WRITE_HMC833_24_RESISTER
+  -------         PROC          WRITE_HMC833
+  -------         DO            
+  D:0008H         SYMBOL        freq_turn_word
+  -------         ENDDO         
+  C:0003H         LINE#         70
+  C:0003H         LINE#         71
+  C:0003H         LINE#         73
+  C:000CH         LINE#         76
+  C:001BH         LINE#         77
+  C:002AH         LINE#         78
+  C:0039H         LINE#         80
+  C:0043H         LINE#         81
+  C:004DH         LINE#         82
+  C:0057H         LINE#         83
+  C:0061H         LINE#         84
+  C:006BH         LINE#         85
+  C:0073H         LINE#         87
+  C:0084H         LINE#         88
+  C:0094H         LINE#         90
+  C:00A5H         LINE#         91
+  C:00B6H         LINE#         93
+  C:00C6H         LINE#         94
+  C:00D7H         LINE#         95
+  C:00E6H         LINE#         96
+  C:00F4H         LINE#         97
+  C:0102H         LINE#         99
+  C:0111H         LINE#         101
+  C:0120H         LINE#         102
+  C:0131H         LINE#         104
+  -------         ENDPROC       WRITE_HMC833
+  -------         PROC          PORT_INIT_833
+  C:024AH         LINE#         109
+  C:024AH         LINE#         110
+  C:024AH         LINE#         111
+  C:024DH         LINE#         112
+  C:0250H         LINE#         114
+  -------         ENDPROC       PORT_INIT_833
+  -------         PROC          MAIN
+  C:01BEH         LINE#         119
+BL51 BANKED LINKER/LOCATER V6.22                                                      12/27/2018  14:38:26  PAGE 5
+
+
+  C:01BEH         LINE#         120
+  C:01BEH         LINE#         121
+  C:01C1H         LINE#         123
+  C:01C4H         LINE#         124
+  C:01C7H         LINE#         125
+  C:01CEH         LINE#         126
+  C:01D1H         LINE#         127
+  C:01D4H         LINE#         128
+  C:01D4H         LINE#         129
+  C:01D4H         LINE#         130
+  C:01D7H         LINE#         131
+  C:01D7H         LINE#         132
+  C:01DEH         LINE#         133
+  C:01E1H         LINE#         134
+  C:01E1H         LINE#         135
+  C:01E4H         LINE#         136
+  C:01EBH         LINE#         137
+  C:01EBH         LINE#         138
+  C:01EBH         LINE#         139
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        HMC833
+
+  -------         MODULE        ?C?ULCMP
+  C:021AH         PUBLIC        ?C?ULCMP
+  -------         ENDMOD        ?C?ULCMP
+
+  -------         MODULE        ?C?LSHL
+  C:022BH         PUBLIC        ?C?LSHL
+  -------         ENDMOD        ?C?LSHL
+
+Program Size: data=19.0 xdata=0 code=597
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

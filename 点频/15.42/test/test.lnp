@@ -1,0 +1,7 @@
+"STARTUP.obj",
+"main.obj",
+"lmx2954.obj" 
+TO "test" 
+RAMSIZE(256) 
+CODE( 0X0000-0X1FFF )
+XDATA( 0X0000-0X01FF )

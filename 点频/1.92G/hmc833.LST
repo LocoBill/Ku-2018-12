@@ -1,0 +1,174 @@
+C51 COMPILER V9.00   HMC833                                                                12/27/2018 14:38:25 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE HMC833
+OBJECT MODULE PLACED IN hmc833.OBJ
+COMPILER INVOKED BY: D:\Keil51\C51\BIN\C51.EXE hmc833.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include "c8051f330.h"
+   2          #define SYSCLK     24000000        // SYSCLK frequency in Hz
+   3          
+   4          sbit HMC833_Sen = P0^1;
+   5          sbit HMC833_Sck = P0^3;
+   6          sbit HMC833_Sdi = P0^2;
+   7          sbit HMC833_Ld = P0^4;
+   8          
+   9          void SYSCLK_Init (void)
+  10          {
+  11   1         OSCICN = 0x82;
+  12   1        // RSTSRC = 0x04;          
+  13   1      }
+  14          
+  15          void delay_us(int t)
+  16          {
+  17   1              unsigned int x,y;
+  18   1              for(x=t;x>0;x--)
+  19   1                      for(y=110;y>0;y--);
+  20   1      }
+  21          
+  22          
+  23          void write_HMC833_24_resister(unsigned char Addr, unsigned long int Register_data)
+  24          {
+  25   1              unsigned char i;
+  26   1              HMC833_Sen = 0;
+  27   1              HMC833_Sck = 0;
+  28   1              Addr = Addr<<1;
+  29   1              HMC833_Sen = 1;
+  30   1              delay_us(10);
+  31   1              for(i=0;i<7;i++)                        
+  32   1              {
+  33   2                      if((0x80 & Addr) == 0x80)
+  34   2                      {
+  35   3                              HMC833_Sdi = 1;                         
+  36   3                      }
+  37   2                      else
+  38   2                      {
+  39   3                              HMC833_Sdi = 0;
+  40   3                      }
+  41   2                      HMC833_Sck = 1;
+  42   2                      delay_us(10);
+  43   2                      HMC833_Sck = 0;
+  44   2                      delay_us(10);
+  45   2                      Addr = Addr<<1;
+  46   2              }
+  47   1              for(i=0;i<25;i++)
+  48   1              {
+  49   2                      if((0x800000 & Register_data) == 0x800000)
+  50   2                      {
+  51   3                              HMC833_Sdi = 1;                         
+  52   3                      }
+  53   2                      else
+  54   2                      {
+  55   3                              HMC833_Sdi = 0;
+C51 COMPILER V9.00   HMC833                                                                12/27/2018 14:38:25 PAGE 2   
+
+  56   3                      }
+  57   2                      HMC833_Sck = 1;
+  58   2                      delay_us(10);
+  59   2                      HMC833_Sck = 0;
+  60   2                      delay_us(10);
+  61   2                      Register_data = Register_data<<1;
+  62   2              }
+  63   1              delay_us(10);
+  64   1              HMC833_Sen = 0; 
+  65   1              delay_us(10);  
+  66   1              
+  67   1      }
+  68          
+  69          
+  70          void write_Hmc833()
+  71          {
+  72   1      
+  73   1              unsigned long int freq_turn_word = 0x000000;
+  74   1      //      freq_turn_word = freq_word /100;
+  75   1      
+  76   1          write_HMC833_24_resister(0x0, 0xA7975);   //ID寄存器     (不改)
+  77   1              write_HMC833_24_resister(0x1, 0x2);      //复位寄存器    （不改）
+  78   1              write_HMC833_24_resister(0x2, 0x2);     //分频寄存器      (不改)
+  79   1      
+  80   1              write_HMC833_24_resister(0x5, 0x0f88);   //
+  81   1              write_HMC833_24_resister(0x5, 0xe010);   //      Rf分频 不分频
+  82   1              write_HMC833_24_resister(0x5, 0x0898);   //     1500-3000M写0x0898 分频（<1500M）写0x0A18     
+  83   1              write_HMC833_24_resister(0x5, 0x1628);   //
+  84   1              write_HMC833_24_resister(0x5, 0x60a0);   //
+  85   1              write_HMC833_24_resister(0x5, 0x00);     // 默认 （不改）
+  86   1      
+  87   1              write_HMC833_24_resister(0x6, 0X200B4a);  //SD CFG Register  分数模式 0X200B4A          整数模式 0X2003CA
+  88   1              write_HMC833_24_resister(0x7, 0x1ca);      //????:16.64ns, REG07[11:10]=[1:1] ,REG07[9:7]=[0:1:1] (不懂)
+  89   1                                                  //Lock Detect Register      
+  90   1              write_HMC833_24_resister(0x8, 0xc1beff);                // Analog EN Register 默认不改
+  91   1              write_HMC833_24_resister(0x9, 0x547FFF);        //Charge Pump UP/DN Gain current 200mA    Charge Pump Offset curr
+             -ent 200uA
+  92   1                                                         //Charge Pump Register 不懂
+  93   1              write_HMC833_24_resister(0xa, 0x2046);     //VCO AutoCal Configuration Register
+  94   1              write_HMC833_24_resister(0xb, 0x7C021);   //PD Register
+  95   1              write_HMC833_24_resister(0xc, 0xFF);         //Exact Frequency Mode Register  消除（跳动）杂散 
+  96   1              write_HMC833_24_resister(0xd, 0x0);        //不改
+  97   1              write_HMC833_24_resister(0xe, 0x0);        //不改
+  98   1      
+  99   1              write_HMC833_24_resister(0xf, 0x81);                              //????????  GPO_SPI_RDIV Register不改
+ 100   1                                                              //GPO_SPI_RDIV Register
+ 101   1              write_HMC833_24_resister(0x3, 0x26);                //整数寄存器 N=38   （改）分数模式N最小值20
+ 102   1              write_HMC833_24_resister(0x4, 0x666667);                 //分数寄存器
+ 103   1              
+ 104   1              write_HMC833_24_resister(0x5, 0xe090);      // VCO SPI Register  频率>3000M ,<1500M 屏蔽此句
+ 105   1              
+ 106   1              
+ 107   1      }
+ 108          
+ 109          void PORT_Init_833(void)
+ 110          {
+ 111   1         P0MDOUT   = 0x0E;
+ 112   1         XBR1     = 0x40;    //交叉开关使能
+ 113   1      
+ 114   1      }
+ 115          
+ 116          
+C51 COMPILER V9.00   HMC833                                                                12/27/2018 14:38:25 PAGE 3   
+
+ 117          
+ 118          
+ 119          void main()
+ 120          {
+ 121   1              PCA0MD &= ~0x40;   //关看门狗
+ 122   1              //PCA0MD = 0x00;
+ 123   1              SYSCLK_Init();
+ 124   1              PORT_Init_833();
+ 125   1              delay_us(3000);
+ 126   1              write_Hmc833();
+ 127   1              write_Hmc833();
+ 128   1              while(1)
+ 129   1              {        
+ 130   2                      if(HMC833_Ld ==0)
+ 131   2                      {
+ 132   3                        delay_us(300);
+ 133   3                        if(HMC833_Ld ==0)
+ 134   3                               {
+ 135   4                                      write_Hmc833();
+ 136   4                                  delay_us(3000);
+ 137   4                               }
+ 138   3                      }
+ 139   2              }
+ 140   1      }
+ 141          
+ 142          
+ 143          
+ 144                  
+ 145                  
+ 146          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    546    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      10
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,4 @@
+"STARTUP.obj",
+"hmc833.obj" 
+TO "hmc833_2.02G" 
+RAMSIZE(256) 

@@ -1,0 +1,4 @@
+"STARTUP.obj",
+"hmc764.obj" 
+TO "hmc833_800M" 
+RAMSIZE(256) 

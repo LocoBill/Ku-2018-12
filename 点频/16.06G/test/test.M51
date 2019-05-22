@@ -1,0 +1,323 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        01/03/2019  18:51:54  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL51\C51\BIN\BL51.EXE STARTUP.obj, main.obj, lmx2954.obj TO test RAMSIZE (256) CODE (0X0000-0X1FFF) XDATA (0X0000-0
+>> X01FF)
+
+
+MEMORY MODEL: LARGE
+
+
+INPUT MODULES INCLUDED:
+  STARTUP.obj (?C_STARTUP)
+  main.obj (MAIN)
+  lmx2954.obj (LMX2954)
+  D:\KEIL51\C51\LIB\C51L.LIB (?C?COPY)
+  D:\KEIL51\C51\LIB\C51L.LIB (?C?ULSHR)
+  D:\KEIL51\C51\LIB\C51L.LIB (?C?LSTXDATA)
+
+
+LINK MAP OF MODULE:  test (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *  X D A T A   M E M O R Y  * * * * * * *
+            XDATA   0000H     01CEH     UNIT         _XDATA_GROUP_
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     01C4H     UNIT         ?CO?LMX2954
+            CODE    01C7H     0115H     UNIT         ?C?LIB_CODE
+            CODE    02DCH     00D4H     UNIT         ?PR?_LMX2594_SENDDATA1?LMX2954
+            CODE    03B0H     007DH     UNIT         ?PR?LMX_2549?LMX2954
+            CODE    042DH     0028H     UNIT         ?PR?MAIN?MAIN
+            CODE    0455H     0028H     UNIT         ?PR?_DELAY_2594?LMX2954
+            CODE    047DH     001EH     UNIT         ?PR?_DELAY_A?MAIN
+            CODE    049BH     000CH     UNIT         ?C_C51STARTUP
+            CODE    04A7H     0009H     UNIT         ?PR?INIT_DEVICE?MAIN
+            CODE    04B0H     0007H     UNIT         ?PR?PORT_IO_INIT?MAIN
+            CODE    04B7H     0004H     UNIT         ?PR?PCA_INIT?MAIN
+            CODE    04BBH     0004H     UNIT         ?PR?OSCILLATOR_INIT?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   test (?C_STARTUP)
+
+
+SEGMENT                                  XDATA_GROUP
+  +--> CALLED SEGMENT                  START    LENGTH
+------------------------------------------------------
+?C_C51STARTUP                          -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                          -----    -----
+  +--> ?PR?INIT_DEVICE?MAIN
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/03/2019  18:51:54  PAGE 2
+
+
+  +--> ?PR?_DELAY_A?MAIN
+  +--> ?PR?LMX_2549?LMX2954
+
+?PR?INIT_DEVICE?MAIN                   -----    -----
+  +--> ?PR?PCA_INIT?MAIN
+  +--> ?PR?PORT_IO_INIT?MAIN
+  +--> ?PR?OSCILLATOR_INIT?MAIN
+
+?PR?LMX_2549?LMX2954                   0000H    01C5H
+  +--> ?CO?LMX2954
+  +--> ?PR?_LMX2594_SENDDATA1?LMX2954
+
+?PR?_LMX2594_SENDDATA1?LMX2954         01C5H    0009H
+  +--> ?PR?_DELAY_2594?LMX2954
+
+
+
+SYMBOL TABLE OF MODULE:  test (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:049BH         SEGMENT       ?C_C51STARTUP
+  I:0008H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:049EH         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:049BH         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:049BH         LINE#         133
+  C:049DH         LINE#         134
+  C:049EH         LINE#         135
+  C:049FH         LINE#         136
+  C:04A1H         LINE#         185
+  C:04A4H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        MAIN
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/03/2019  18:51:54  PAGE 3
+
+
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:00A4H         PUBLIC        P0MDOUT
+  C:04B0H         PUBLIC        Port_IO_Init
+  D:00D9H         PUBLIC        PCA0MD
+  C:04BBH         PUBLIC        Oscillator_Init
+  D:00E2H         PUBLIC        XBR1
+  C:042DH         PUBLIC        main
+  D:00B2H         PUBLIC        OSCICN
+  B:0080H.4       PUBLIC        LD_2594
+  C:04A7H         PUBLIC        Init_Device
+  C:04B7H         PUBLIC        PCA_Init
+  C:048FH         PUBLIC        _delay_a
+  -------         PROC          PCA_INIT
+  C:04B7H         LINE#         6
+  C:04B7H         LINE#         7
+  C:04B7H         LINE#         8
+  C:04BAH         LINE#         9
+  -------         ENDPROC       PCA_INIT
+  -------         PROC          PORT_IO_INIT
+  C:04B0H         LINE#         11
+  C:04B0H         LINE#         12
+  C:04B0H         LINE#         13
+  C:04B3H         LINE#         14
+  C:04B6H         LINE#         15
+  -------         ENDPROC       PORT_IO_INIT
+  -------         PROC          OSCILLATOR_INIT
+  C:04BBH         LINE#         17
+  C:04BBH         LINE#         18
+  C:04BBH         LINE#         20
+  C:04BEH         LINE#         21
+  -------         ENDPROC       OSCILLATOR_INIT
+  -------         PROC          INIT_DEVICE
+  C:04A7H         LINE#         23
+  C:04A7H         LINE#         24
+  C:04A7H         LINE#         25
+  C:04AAH         LINE#         26
+  C:04ADH         LINE#         27
+  -------         ENDPROC       INIT_DEVICE
+  -------         PROC          L?0014
+  -------         ENDPROC       L?0014
+  -------         PROC          _DELAY_A
+  D:0006H         SYMBOL        z
+  C:048FH         LINE#         31
+  C:048FH         LINE#         32
+  C:048FH         LINE#         33
+  C:0493H         LINE#         34
+  C:0493H         LINE#         35
+  C:0498H         LINE#         36
+  C:049AH         LINE#         37
+  -------         ENDPROC       _DELAY_A
+  -------         PROC          MAIN
+  C:042DH         LINE#         39
+  C:042DH         LINE#         40
+  C:042DH         LINE#         41
+  C:0430H         LINE#         42
+  C:0437H         LINE#         43
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/03/2019  18:51:54  PAGE 4
+
+
+  C:043AH         LINE#         44
+  C:043DH         LINE#         45
+  C:043DH         LINE#         46
+  C:043DH         LINE#         47
+  C:0440H         LINE#         48
+  C:0440H         LINE#         49
+  C:0440H         LINE#         50
+  C:0443H         LINE#         51
+  C:0443H         LINE#         52
+  C:044AH         LINE#         53
+  C:044DH         LINE#         54
+  C:044DH         LINE#         55
+  C:0450H         LINE#         56
+  C:0450H         LINE#         57
+  C:0450H         LINE#         58
+  C:0450H         LINE#         59
+  C:0450H         LINE#         60
+  C:0453H         LINE#         61
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        LMX2954
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  C:02E2H         PUBLIC        _lmx2594_senddata1
+  C:03B0H         PUBLIC        lmx_2549
+  B:0080H.3       PUBLIC        CSB_2594
+  B:0080H.2       PUBLIC        SDI_2594
+  B:0080H.1       PUBLIC        SCK_2594
+  C:0003H         SYMBOL        _?ix1000
+  C:045EH         PUBLIC        _delay_2594
+  C:045AH         SYMBOL        L?0022
+  -------         PROC          L?0021
+  -------         ENDPROC       L?0021
+  C:045AH         SYMBOL        L?0022
+  -------         PROC          _DELAY_2594
+  D:0006H         SYMBOL        z
+  -------         DO            
+  D:0004H         SYMBOL        x
+  -------         ENDDO         
+  C:045EH         LINE#         6
+  C:045EH         LINE#         7
+  C:045EH         LINE#         9
+  C:0468H         LINE#         10
+  C:0468H         LINE#         11
+  C:047CH         LINE#         12
+  C:047CH         LINE#         13
+  -------         ENDPROC       _DELAY_2594
+  -------         PROC          L?0023
+  -------         ENDPROC       L?0023
+  -------         PROC          _LMX2594_SENDDATA1
+  X:01C5H         SYMBOL        dat
+  -------         DO            
+  D:0003H         SYMBOL        i
+  X:01C9H         SYMBOL        add_t
+  D:0001H         SYMBOL        ADD
+  X:01CAH         SYMBOL        dat_v
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/03/2019  18:51:54  PAGE 5
+
+
+  X:01CCH         SYMBOL        dat_t
+  -------         ENDDO         
+  C:02E2H         LINE#         56
+  C:02E8H         LINE#         57
+  C:02E8H         LINE#         59
+  C:02EAH         LINE#         60
+  C:02EFH         LINE#         61
+  C:02F7H         LINE#         62
+  C:030CH         LINE#         63
+  C:0322H         LINE#         64
+  C:0324H         LINE#         65
+  C:0326H         LINE#         66
+  C:032DH         LINE#         67
+  C:032FH         LINE#         68
+  C:0336H         LINE#         69
+  C:0336H         LINE#         70
+  C:0336H         LINE#         71
+  C:033DH         LINE#         72
+  C:0345H         LINE#         73
+  C:0349H         LINE#         74
+  C:034DH         LINE#         75
+  C:034DH         LINE#         76
+  C:0350H         LINE#         77
+  C:0352H         LINE#         78
+  C:0356H         LINE#         79
+  C:0359H         LINE#         80
+  C:035EH         LINE#         81
+  C:0360H         LINE#         82
+  C:0360H         LINE#         83
+  C:036CH         LINE#         84
+  C:0380H         LINE#         85
+  C:0384H         LINE#         86
+  C:0386H         LINE#         87
+  C:0386H         LINE#         88
+  C:0389H         LINE#         89
+  C:038BH         LINE#         90
+  C:0398H         LINE#         91
+  C:039BH         LINE#         92
+  C:03A0H         LINE#         93
+  C:03A7H         LINE#         94
+  C:03A9H         LINE#         95
+  -------         ENDPROC       _LMX2594_SENDDATA1
+  -------         PROC          LMX_2549
+  -------         DO            
+  X:0000H         SYMBOL        tab1
+  X:01C4H         SYMBOL        i
+  -------         ENDDO         
+  C:03B0H         LINE#         98
+  C:03B0H         LINE#         99
+  C:03B0H         LINE#         100
+  C:03C3H         LINE#         218
+  C:03C8H         LINE#         220
+  C:03D1H         LINE#         221
+  C:03D6H         LINE#         222
+  C:03E7H         LINE#         223
+  C:03E7H         LINE#         224
+  C:0415H         LINE#         225
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/03/2019  18:51:54  PAGE 6
+
+
+  C:041DH         LINE#         226
+  C:0422H         LINE#         227
+  -------         ENDPROC       LMX_2549
+  -------         ENDMOD        LMX2954
+
+  -------         MODULE        ?C?COPY
+  C:0297H         PUBLIC        ?C?COPY
+  -------         ENDMOD        ?C?COPY
+
+  -------         MODULE        ?C?ULSHR
+  C:02BDH         PUBLIC        ?C?ULSHR
+  -------         ENDMOD        ?C?ULSHR
+
+  -------         MODULE        ?C?LSTXDATA
+  C:02D0H         PUBLIC        ?C?LSTXDATA
+  -------         ENDMOD        ?C?LSTXDATA
+
+Program Size: data=9.0 xdata=462 code=1215
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

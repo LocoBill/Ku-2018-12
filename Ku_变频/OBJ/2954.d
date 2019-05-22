@@ -1,0 +1,13 @@
+..\obj\2954.o: ..\HARDWARE\2954\2954.c
+..\obj\2954.o: ..\HARDWARE\2954\2954.h
+..\obj\2954.o: ..\SYSTEM\sys\sys.h
+..\obj\2954.o: ..\USER\stm32f10x.h
+..\obj\2954.o: ..\CORE\core_cm3.h
+..\obj\2954.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\2954.o: ..\USER\system_stm32f10x.h
+..\obj\2954.o: ..\USER\stm32f10x_conf.h
+..\obj\2954.o: ..\STM32F10x_FWLib\inc\stm32f10x_gpio.h
+..\obj\2954.o: ..\USER\stm32f10x.h
+..\obj\2954.o: ..\STM32F10x_FWLib\inc\stm32f10x_rcc.h
+..\obj\2954.o: ..\STM32F10x_FWLib\inc\stm32f10x_usart.h
+..\obj\2954.o: ..\STM32F10x_FWLib\inc\misc.h
